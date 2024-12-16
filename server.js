@@ -1,12 +1,13 @@
 import express from "express";
+const app = express();
 import photosRoutes from "./routes/photos.js";
 import tagsRoutes from "./routes/tags.js";
 import cors from "cors";
 
-const app = express();
-
 const PORT = 8080;
+//midleware
 app.use(cors());
+app.use(express.json());
 
 //routes
 app.use("/tags", tagsRoutes);
