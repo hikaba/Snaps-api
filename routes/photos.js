@@ -27,4 +27,20 @@ router.get("/:id", (req, res) => {
 
     res.send(foundPhoto);
 })
+//get that responds with an array of comment objects associated with the photo, specified with an id of :id.
+router.get("/:id/comments", (req, res) => {
+    console.log(req.params);
+
+    const dataBuffer = fs.readFileSync("./data/photos.json");
+    const photosData = JSON.parse(dataBuffer);
+
+    const foundPhoto = photosData.find((photo) => {
+        return photo.id === req.params.id;
+    });
+
+    if(!foundPhoto) {
+        res.status(404).send("Error: photo with this id does not exist");
+    }
+    res.send(foundPhoto.comments);
+})
 export default router;
