@@ -8,9 +8,12 @@ const app = express();
 const PORT = 8080;
 app.use(cors());
 
+//routes
 app.use("/tags", tagsRoutes);
+app.use("/photos", photosRoutes);
 
-app.get("/", (req, res)=>{
+//default 'home' route
+app.get("/", (_req, res)=>{
     res.send("welcome to the compliments server!!!")
 });
 

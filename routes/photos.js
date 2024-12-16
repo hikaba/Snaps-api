@@ -1,10 +1,14 @@
-import express from 'express';
-import fs from "fs";
+import express from "express";
 const router = express.Router();
+import fs from "fs";
+import crypto from "crypto";
 
-router.get("/", (req,res)=>{
-    const data = fs.readFileSync("./data/compliments.json");
-    console.log(data);
-    res.send("made it to get /compliments");
-});
+router.get("/", (_req, res) => {
+    // reading photos from json file
+    const dataBuffer = fs.readFileSync("./data/photos.json");
+    const photosData = JSON.parse(dataBuffer);
+    //returning photos array
+    res.send(photosData);
+})
+
 export default router;
