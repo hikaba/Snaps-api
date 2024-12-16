@@ -53,7 +53,7 @@ router.post("/:id/comments", (req, res) => {
         name: req.body.name,
         comment: req.body.comment,
         id: crypto.randomUUID(),
-        timestamp: Date.name(),
+        timestamp: Date.now(),
     }
 
     // read all comments in json file
