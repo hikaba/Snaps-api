@@ -72,6 +72,6 @@ router.post("/:id/comments", (req, res) => {
     // write to json file
     fs.writeFileSync("./data/photos.json", stringComments);
     // send res confirmation status and msg
-    res.status(201).send("succesfully posted");
+    res.status(201).json(newComment);
 })
 export default router;
